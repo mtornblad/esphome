@@ -1,0 +1,20 @@
+version: '3'
+services:
+  esphome:
+    container_name: esphome
+    image: ghcr.io/esphome/esphome:dev
+    volumes:
+      - ../../config:/config
+      - ../esphome:/esphome/esphome
+#      - /server/dev/esphome.old/esphome:/esphome
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/ttyUSB1:/dev/ttyUSB1"
+    restart: always
+    # privileged: true
+    network_mode: host
+    environment:
+      - USERNAME=esphome
+      - PASSWORD=password
+
