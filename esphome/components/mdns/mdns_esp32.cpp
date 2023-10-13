@@ -1,4 +1,4 @@
-#ifdef USE_ESP32
+#if defined(USE_ESP32) && ! defined(USE_OPENTHREAD)
 
 #include <mdns.h>
 #include <cstring>
