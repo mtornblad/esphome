@@ -71,8 +71,6 @@ static esp_netif_t *init_openthread_netif(const esp_openthread_platform_config_t
 static void ot_task_worker(void *aContext) {
   OpenthreadComponent *ot = (OpenthreadComponent *) aContext;
 
-  ESP_LOGCONFIG(TAG, "CHANNEL: %d", ot->get_channel());
-
   esp_openthread_platform_config_t config = {
       .radio_config = ESP_OPENTHREAD_DEFAULT_RADIO_CONFIG(),
       .host_config = ESP_OPENTHREAD_DEFAULT_HOST_CONFIG(),

@@ -30,5 +30,7 @@ async def to_code(config):
     cg.add(var.set_channel(config[CONF_CHANNEL]))
 
     await cg.register_component(var, config)
-    cg.add_define("USE_OPENTHREAD")
-
+    # cg.add_define("USE_OPENTHREAD")
+    cg.add_build_flag("-DOPENTHREAD_CONFIG_SRP_CLIENT_BUFFERS_TXT_BUFFER_SIZE=128")
+    cg.add_build_flag("-DOPENTHREAD_CONFIG_SRP_CLIENT_BUFFERS_MAX_SERVICES=5")
+    cg.add_build_flag("-DUSE_OPENTHREAD")

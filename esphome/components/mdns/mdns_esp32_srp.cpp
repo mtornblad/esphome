@@ -3,7 +3,7 @@
 #include <cstring>
 #include "esphome/core/hal.h"
 #include "esphome/core/log.h"
-#include "srp_component.h"
+#include "mdns_component.h"
 #include "esp_err.h"
 #include "esp_event.h"
 #include "esp_log.h"
