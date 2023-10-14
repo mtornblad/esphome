@@ -1,0 +1,45 @@
+esphome:
+  name: eh-thread-light
+  name_add_mac_suffix: true
+  friendly_name: Thread & Ligth for esp32-c6-devkitc-1
+  comment: "Simple Thread firmware to control on-board RGB-led."
+  platformio_options:
+    board_upload.flash_size: 8MB
+
+esp32:
+  board: esp32-c6-devkitc-1
+  variant: ESP32C6
+  framework:
+    platform_version: https://github.com/mtornblad/platform-espressif32.git#esp32-c6
+    type: esp-idf
+    version: 5.1.1
+    sdkconfig_options:
+      CONFIG_OPENTHREAD_ENABLED: y
+
+openthread:
+  network_key: !secret network_key
+  channel: 15
+
+network:
+  enable_ipv6: true
+
+logger:
+
+api:
+  password: "password"
+
+ota:
+  password: "password"
+    
+web_server:
+  local: true
+  port: 80
+
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: RBG
+    pin: GPIO8
+    num_leds: 30
+    rmt_channel: 0
+    chipset: ws2812
+    name: "Status Led"
